@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الجي كوم · ورشة محتوى سبتمبر 2026</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Arial, sans-serif; }
+        body { background-color: #0A0A1A; color: #EEEEFF; padding: 30px 20px; min-height: 100vh; display: flex; justify-content: center; align-items: center; }
+        .container { max-width: 1500px; width: 100%; background: linear-gradient(145deg, #15102A, #0F0A1F); border-radius: 40px; padding: 40px 35px; box-shadow: 0 30px 80px rgba(80,30,150,0.35), inset 0 0 0 1px rgba(180,130,255,0.08); border: 1px solid rgba(180,130,255,0.06); position: relative; overflow: hidden; }
+        .container::before { content: '◆'; position: absolute; top: -80px; right: -40px; font-size: 300px; color: rgba(120,70,200,0.03); pointer-events: none; transform: rotate(15deg); }
+        .container::after { content: '✦'; position: absolute; bottom: -60px; left: -30px; font-size: 280px; color: rgba(160,100,240,0.02); pointer-events: none; transform: rotate(-10deg); }
+
+        .main-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; border-bottom: 2px solid rgba(160,100,240,0.12); padding-bottom: 25px; margin-bottom: 35px; position: relative; z-index: 2; }
+        .main-header .brand { display: flex; align-items: center; gap: 18px; }
+        .main-header .brand .logo-placeholder { font-size: 30px; font-weight: 900; background: linear-gradient(135deg, #A78BFA, #D8B4FE); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: 1px; }
+        .main-header .brand .badge { background: rgba(160,100,240,0.12); padding: 6px 18px; border-radius: 60px; border: 1px solid rgba(160,100,240,0.15); color: #C084FC; font-size: 14px; font-weight: 700; }
+        .main-header .meta { text-align: left; color: #9A8ABF; font-size: 15px; }
+        .main-header .meta .highlight { color: #E879F9; font-weight: 700; }
+        .main-header .meta .date-range { display: block; font-size: 18px; color: #D8B4FE; font-weight: 800; }
+
+        .tabs-wrapper { display: flex; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; position: relative; z-index: 2; border-bottom: 1px solid rgba(255,255,255,0.04); padding-bottom: 15px; }
+        .tab-btn { background: transparent; border: 2px solid rgba(255,255,255,0.06); color: #A090B8; padding: 12px 28px; border-radius: 60px; font-size: 16px; font-weight: 700; cursor: pointer; transition: all 0.3s ease; }
+        .tab-btn:hover { background: rgba(160,100,240,0.06); border-color: #A78BFA; color: #fff; }
+        .tab-btn.active { background: #7C3AED; border-color: #A78BFA; color: #fff; box-shadow: 0 8px 30px rgba(124,58,237,0.25); }
+
+        .tab-pane { display: none; animation: fadeIn 0.6s ease; position: relative; z-index: 2; }
+        .tab-pane.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+        .section-title { font-size: 26px; font-weight: 800; color: #D8B4FE; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+        .section-title::before { content: '◈'; color: #A78BFA; font-size: 28px; }
+
+        .intro-text { color: #C4B5D8; font-size: 16px; line-height: 1.9; margin-bottom: 25px; }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 16px; margin-bottom: 30px; }
+        .stat-card { background: rgba(255,255,255,0.02); padding: 20px 16px; border-radius: 18px; border: 1px solid rgba(160,100,240,0.06); text-align: center; transition: 0.2s; }
+        .stat-card:hover { background: rgba(160,100,240,0.03); border-color: rgba(160,100,240,0.12); }
+        .stat-card .number { font-size: 34px; font-weight: 800; background: linear-gradient(135deg, #A78BFA, #D8B4FE); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: block; }
+        .stat-card .label { font-size: 13px; color: #9A8ABF; margin-top: 4px; }
+
+        .content-block { background: rgba(0,0,0,0.2); border-radius: 22px; padding: 22px 25px; margin-bottom: 25px; border: 1px solid rgba(160,100,240,0.06); }
+        .content-block .block-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px dashed rgba(160,100,240,0.1); }
+        .content-block .block-header h3 { font-size: 20px; color: #D8B4FE; font-weight: 800; display: flex; align-items: center; gap: 10px; }
+        .content-block .block-header .meta-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+        .meta-tag { padding: 4px 14px; border-radius: 30px; font-size: 12px; font-weight: 700; }
+        .tag-platform-ig { background: rgba(232,121,249,0.10); color: #F0ABFC; border: 1px solid rgba(232,121,249,0.15); }
+        .tag-platform-tt { background: rgba(100,200,255,0.08); color: #A0D8FF; border: 1px solid rgba(100,200,255,0.12); }
+        .tag-goal { background: rgba(52,211,153,0.10); color: #34D8A4; border: 1px solid rgba(52,211,153,0.15); }
+        .tag-date { background: rgba(251,191,36,0.10); color: #FBBF24; border: 1px solid rgba(251,191,36,0.15); }
+
+        .goal-box { background: rgba(52,211,153,0.05); border-right: 4px solid #34D8A4; border-radius: 12px; padding: 14px 18px; margin-bottom: 18px; }
+        .goal-box .goal-label { font-size: 13px; color: #34D8A4; font-weight: 800; margin-bottom: 4px; }
+        .goal-box p { color: #B8A8D0; font-size: 14px; line-height: 1.7; }
+
+        .slide-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        .slide-table th { text-align: right; padding: 12px 10px; background: rgba(160,100,240,0.06); color: #C084FC; font-weight: 700; border-bottom: 2px solid rgba(160,100,240,0.1); font-size: 13px; }
+        .slide-table td { padding: 14px 10px; border-bottom: 1px solid rgba(255,255,255,0.03); vertical-align: top; }
+        .slide-table .slide-num { font-weight: 800; color: #E879F9; white-space: nowrap; }
+        .slide-table .slide-title { font-weight: 700; color: #D8B4FE; }
+        .slide-table .slide-script { color: #C4B5D8; line-height: 1.7; }
+        .slide-table .slide-visual { color: #A090B8; font-size: 12px; line-height: 1.6; }
+
+        .reel-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        .reel-table th { text-align: right; padding: 12px 10px; background: rgba(232,121,249,0.06); color: #F0ABFC; font-weight: 700; border-bottom: 2px solid rgba(232,121,249,0.1); font-size: 13px; }
+        .reel-table td { padding: 14px 10px; border-bottom: 1px solid rgba(255,255,255,0.03); vertical-align: top; }
+        .reel-table .scene-num { font-weight: 800; color: #F0ABFC; white-space: nowrap; }
+        .reel-table .scene-time { font-weight: 700; color: #FBBF24; font-size: 12px; white-space: nowrap; }
+        .reel-table .scene-script { color: #C4B5D8; line-height: 1.7; }
+        .reel-table .scene-visual { color: #A090B8; font-size: 12px; line-height: 1.6; }
+
+        .publish-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        .publish-table th { text-align: right; padding: 12px 10px; background: rgba(160,100,240,0.08); color: #D8B4FE; font-weight: 700; border-bottom: 2px solid #7C3AED; font-size: 14px; }
+        .publish-table td { padding: 12px 10px; border-bottom: 1px solid rgba(160,100,240,0.04); color: #E9D5FF; vertical-align: middle; }
+        .publish-table .day-cell { font-weight: 700; color: #E9D5FF; white-space: nowrap; }
+        .publish-table .date-cell { background: rgba(160,100,240,0.08); padding: 2px 12px; border-radius: 30px; font-size: 12px; color: #B8A0D8; font-weight: 700; display: inline-block; }
+
+        .type-badge { display: inline-block; padding: 3px 14px; border-radius: 30px; font-size: 12px; font-weight: 700; }
+        .type-carousel { background: rgba(167,139,250,0.12); color: #D8B4FE; border: 1px solid rgba(167,139,250,0.15); }
+        .type-reel { background: rgba(232,121,249,0.10); color: #F0ABFC; border: 1px solid rgba(232,121,249,0.12); }
+
+        .footer-note { margin-top: 50px; padding: 25px 30px; background: linear-gradient(135deg, rgba(124,58,237,0.06), rgba(10,5,20,0.8)); border-radius: 24px; border: 2px solid rgba(160,100,240,0.06); text-align: center; position: relative; z-index: 2; }
+        .footer-note .brand-text { font-size: 28px; font-weight: 900; background: linear-gradient(135deg, #A78BFA, #E879F9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: 2px; }
+        .footer-note .tagline { color: #9A8ABF; font-size: 16px; margin-top: 8px; }
+        .footer-note .tagline span { color: #D8B4FE; font-weight: 700; }
+
+        @media (max-width: 768px) {
+            .container { padding: 18px 16px; }
+            .main-header { flex-direction: column; align-items: flex-start; }
+            .main-header .meta { text-align: right; width: 100%; }
+            .tab-btn { padding: 8px 16px; font-size: 13px; }
+            .slide-table, .reel-table, .publish-table { font-size: 11px; display: block; overflow-x: auto; white-space: nowrap; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .section-title { font-size: 22px; }
+        }
+        @media (max-width: 480px) {
+            .slide-table td, .slide-table th,
+            .reel-table td, .reel-table th,
+            .publish-table td, .publish-table th { padding: 8px 5px; }
+            .stat-card .number { font-size: 26px; }
+            .footer-note .brand-text { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- الهيدر -->
+    <div class="main-header">
+        <div class="brand">
+            <div class="logo-placeholder">🔌 الجي كوم</div>
+            <div class="badge">ورشة محتوى سبتمبر 2026</div>
+        </div>
+        <div class="meta">
+            <span class="date-range">1 – 30 سبتمبر 2026</span>
+            <span class="highlight">مرحلة النمو · 4 كاروسيل + 8 ريلز</span>
+        </div>
+    </div>
+
+    <!-- التبويبات -->
+    <div class="tabs-wrapper">
+        <button class="tab-btn active" data-tab="overview">📌 نظرة عامة</button>
+        <button class="tab-btn" data-tab="carousels">📘 الكاروسيلات (4)</button>
+        <button class="tab-btn" data-tab="reels">🎬 الريلز (8)</button>
+        <button class="tab-btn" data-tab="schedule">📅 جدول النشر</button>
+        <button class="tab-btn" data-tab="goals">🎯 أهداف المحتوى</button>
+    </div>
+
+    <!-- ============================================= -->
+    <!-- تبويب: نظرة عامة                              -->
+    <!-- ============================================= -->
+    <div id="overview" class="tab-pane active">
+        <div class="section-title">نظرة عامة على ورشة سبتمبر</div>
+        <p class="intro-text">
+            <strong>الجي كوم</strong> هو متجر سعودي متخصص في بيع <strong>الأجهزة الكهربائية المنزلية</strong>،
+            <strong>أدوات المطابخ</strong>، و<strong>تفصيل مطابخ الألمنيوم</strong> بمختلف أنواعها.
+            شهر سبتمبر هو <strong>مرحلة النمو</strong> في الخطة الربع سنوية، حيث نرفع كمية المحتوى
+            ونركز على <strong>إظهار جودة المنتجات</strong>، <strong>تقديم حلول عملية للمطبخ</strong>،
+            و<strong>تعزيز الثقة بالعلامة كوجهة موثوقة</strong> لكل ما يخص المطبخ في السعودية والخليج.
+        </p>
+
+        <div class="stats-grid">
+            <div class="stat-card"><span class="number">4</span><span class="label">كاروسيل (إنستغرام)</span></div>
+            <div class="stat-card"><span class="number">8</span><span class="label">ريلز (إنستغرام + تيك توك)</span></div>
+            <div class="stat-card"><span class="number">28</span><span class="label">سلايد إجمالي في الكاروسيلات</span></div>
+            <div class="stat-card"><span class="number">~32</span><span class="label">مشهد إجمالي في الريلز</span></div>
+        </div>
+
+        <div class="content-block">
+            <div class="block-header">
+                <h3>🎯 الأهداف الاستراتيجية لشهر سبتمبر</h3>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;">
+                <div style="background:rgba(52,211,153,0.04);border-radius:14px;padding:16px;border-right:4px solid #34D8A4;">
+                    <div style="color:#34D8A4;font-weight:800;margin-bottom:6px;">1. بناء الوعي بالعلامة</div>
+                    <p style="color:#B8A8D0;font-size:13px;line-height:1.7;">تعريف الجمهور بأن الجي كوم هو الوجهة الشاملة للأجهزة الكهربائية، أدوات المطبخ، ومطابخ الألمنيوم.</p>
+                </div>
+                <div style="background:rgba(251,191,36,0.04);border-radius:14px;padding:16px;border-right:4px solid #FBBF24;">
+                    <div style="color:#FBBF24;font-weight:800;margin-bottom:6px;">2. إبراز جودة المنتجات</div>
+                    <p style="color:#B8A8D0;font-size:13px;line-height:1.7;">إظهار مزايا الأجهزة الكهربائية وتفاصيل مطابخ الألمنيوم بأسلوب بصري احترافي.</p>
+                </div>
+                <div style="background:rgba(232,121,249,0.04);border-radius:14px;padding:16px;border-right:4px solid #F0ABFC;">
+                    <div style="color:#F0ABFC;font-weight:800;margin-bottom:6px;">3. تقديم حلول عملية</div>
+                    <p style="color:#B8A8D0;font-size:13px;line-height:1.7;">مساعدة العملاء على اتخاذ قرارات شرائية ذكية عند تجهيز مطبخ أو منزل جديد.</p>
+                </div>
+                <div style="background:rgba(167,139,250,0.04);border-radius:14px;padding:16px;border-right:4px solid #A78BFA;">
+                    <div style="color:#A78BFA;font-weight:800;margin-bottom:6px;">4. زيادة الاستفسارات</div>
+                    <p style="color:#B8A8D0;font-size:13px;line-height:1.7;">دفع الجمهور للتواصل لطلب عرض سعر أو استشارة لتفصيل مطبخ ألمنيوم.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <div class="block-header">
+                <h3>📦 المنتجات والخدمات التي نركز عليها</h3>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;">
+                <div style="background:rgba(160,100,240,0.04);border-radius:12px;padding:14px;">
+                    <div style="color:#D8B4FE;font-weight:700;margin-bottom:6px;">🔌 الأجهزة الكهربائية</div>
+                    <p style="color:#B8A8D0;font-size:13px;line-height:1.6;">ثلاجات، غسالات أطباق، أفران، مايكروويف، شفاطات، خلاطات، وغيرها.</p>
+                </div>
+                <div style="background:rgba(160,100,240,0.04);border-radius:12px;padding:14px;">
+                    <div style="color:#D8B4FE;font-weight:700;margin-bottom:6px;">🍽️ أدوات المطبخ</div>
+                    <p style="color:#B8A8D0;font-size:13px;line-height:1.6;">أطقم أواني، أدوات طهي، منظمات، أدوات صحية للمطبخ.</p>
+                </div>
+                <div style="background:rgba(160,100,240,0.04);border-radius:12px;padding:14px;">
+                    <div style="color:#D8B4FE;font-weight:700;margin-bottom:6px;">🪟 مطابخ الألمنيوم</div>
+                    <p style="color:#B8A8D0;font-size:13px;line-height:1.6;">تصميم وتفصيل مطابخ ألمنيوم بمقاسات وتصاميم مختلفة تناسب كل مطبخ.</p>
+                </div>
+                <div style="background:rgba(160,100,240,0.04);border-radius:12px;padding:14px;">
+                    <div style="color:#D8B4FE;font-weight:700;margin-bottom:6px;">🛠️ خدمات إضافية</div>
+                    <p style="color:#B8A8D0;font-size:13px;line-height:1.6;">تركيب، صيانة، استشارات لتصميم المطبخ، وخدمة ما بعد البيع.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================= -->
+    <!-- تبويب: الكاروسيلات                            -->
+    <!-- ============================================= -->
+    <div id="carousels" class="tab-pane">
+        <div class="section-title">الكاروسيلات الأربعة · سكربت تفصيلي</div>
+        <p class="intro-text">
+            كل كاروسيل يتكون من <strong>7 سلايدات</strong> (غلاف + 5 محتوى + ختام). الهدف من كل كاروسيل
+            تعليمي/قيمي، مع دعوة واضحة لاتخاذ إجراء (CTA) في السلايد الأخير لدفع الجمهور للطلب أو الاستفسار.
+        </p>
+
+        <!-- كاروسيل 1 -->
+        <div class="content-block">
+            <div class="block-header">
+                <h3>📘 كاروسيل #1 · 5 أخطاء عند اختيار مطبخ الألمنيوم</h3>
+                <div class="meta-tags">
+                    <span class="meta-tag tag-date">الثلاثاء 1 سبتمبر</span>
+                    <span class="meta-tag tag-platform-ig">إنستغرام</span>
+                    <span class="meta-tag tag-goal">تعليمي + بيعي</span>
+                </div>
+            </div>
+            <div class="goal-box">
+                <div class="goal-label">🎯 الهدف من الكاروسيل</div>
+                <p>تقديم نصائح عملية للعميل الذي يخطط لتفصيل مطبخ ألمنيوم، مما يبني الثقة بالعلامة كخبير في المجال، ويدفعه للتواصل لطلب استشارة أو عرض سعر.</p>
+            </div>
+            <table class="slide-table">
+                <thead>
+                    <tr><th>السلايد</th><th>العنوان</th><th>السكربت المقترح</th><th>التوجيه البصري</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="slide-num">سلايد 1</td>
+                        <td class="slide-title">الغلاف</td>
+                        <td class="slide-script">"٥ أخطاء عند اختيار مطبخ الألمنيوم! 😱<br>لا تكررها قبل ما تفصّل مطبخك.<br>احفظ المنشور 👇"</td>
+                        <td class="slide-visual">صورة مطبخ ألمنيوم أنيق، مع عنوان كبير ورقم "٥" بلون بنفسجي.</td>
+                    </tr>
+                    <tr>
+                        <td class="slide-num">سلايد 2</td>
+                        <td class="slide-title">الخطأ الأول</td>
+                        <td class="slide-script">"الخطأ 1: اختيار الألمنيوم الرخيص ❌<br>النتيجة: صدأ وتشقق بعد فترة قصيرة.<br>✅ الحل: اختر ألمنيوم بجودة عالية وضمان ممتد."</td>
+                        <td class="slide-visual">صورة ألمنيوم تالف مقابل ألمنيوم عالي الجودة، مع علامة ❌ و✅.</td>
+                    </tr>
+                    <tr>
+                        <td class="slide-num">سلايد 3</td>
+                        <td class="slide-title">الخطأ الثاني</td>
+                        <td class="slide-script">"الخطأ 2: إهمال سماكة الألمنيوم 📏<br>النتيجة: مطبخ غير متين ويتأثر بالرطوبة.<br>✅ الحل: تأكد من سماكة لا تقل عن 1.2 ملم."</td>
+                        <td class="slide-visual">رسم توضيحي لسماكة الألمنيوم، مع مقارنة بين السُمك المناسب والغير مناسب.</td>
+                    </tr>
+                    <tr>
+                        <td class="slide-num">سلايد 4</td>
+                        <td class="slide-title">الخطأ الثالث</td>
+                        <td class="slide-script">"الخطأ 3: عدم قياس المطبخ بدقة 📐<br>النتيجة: فراغات غير مستغلة أو أبواب لا تُغلق.<br>✅ الحل: استعن بمختص لقياس المطبخ وتصميمه."</td>
+                        <td class="slide-visual">صورة مطبخ بفراغات غير مدروسة، مع إبراز أهمية القياس الدقيق.</td>
+                    </tr>
+                    <tr>
+                        <td class="slide-num">سلايد 5</td>
+                        <td class="slide-title">الخطأ الرابع</td>
+                        <td class="slide-script">"الخطأ 4: تجاهل التهوية والإضاءة 💡<br>النتيجة: مطبخ غير عملي ومظلم.<br>✅ الحل: خطط للتهوية والإضاءة من البداية."</td>
+                        <td class="slide-visual">مطبخ مظلم مقابل مطبخ جيد الإضاءة والتهوية.</td>
+                    </tr>
+                    <tr>
+                        <td class="slide-num">سلايد 6</td>
+                        <td class="slide-title">الخطأ الخامس</td>
+                        <td class="slide-script">"الخطأ 5: اختيار فني تركيب غير محترف 🔧<br>النتيجة: مشاكل في التركيب وتكاليف إضافية.<br>✅ الحل: اختر شركة موثوقة بخبرة وضمان."</td>
+                        <td class="slide-visual">صورة تركيب مطبخ احترافي، مع شعار ضمان الجودة.</td>
+                    </tr>
+                    <tr>
+                        <td class="slide-num">سلايد 7</td>
+                        <td class="slide-title">الختام + CTA</td>
+                        <td class="slide-script">"جاهز تفصّل مطبخ أحلامك؟ 🏡<br>فريق الجي كوم جاهز لخدمتك من التصميم حتى التركيب.<br>تواصل معنا الآن لطلب عرض سعر!"</td>
+                        <td class="slide-visual">شعار الجي كوم، مع زر "تواصل معنا" ودعوة للاستفسار.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- كاروسيل 2 -->
+        <div class="content-block">
+            <div class="block-header">
+                <h3>📘 كاروسيل #2 · كيف تختار الأجهزة الكهربائية المناسبة لمطبخك؟</h3>
+                <div class="meta-tags">
+                    <span class="meta-tag tag-date">الثلاثاء 8 سبتمبر</span>
+                    <span class="meta-tag tag-platform-ig">إنستغرام</span>
+                    <span class="meta-tag tag-goal">تعليمي + بيعي</span>
+                </div>
+            </div>
+            <div class="goal-box">
+                <div class="goal-label">🎯 الهدف من الكاروسيل</div>
+                <p>مساعدة الجمهور على اتخاذ قرارات شرائية ذكية عند تجهيز مطبخ جديد أو تجديده، مما يضع الجي كوم كمرجع موثوق، ويمهد لعرض الأجهزة المتوفرة في المتجر.</p>
+            </div>
+            <table class="slide-table">
+                <thead>
+                    <tr><th>السلايد</th><th>العنوان</th><th>السكربت المقترح</th><th>التوجيه البصري</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="slide-num">سلايد 1</td>
+                        <td class="slide-title">الغلاف</td>
+                        <td class="slide-script">"كيف تختار الأجهزة الكهربائية لمطبخك؟ 🔌<br>دليل شامل في ٥ خطوات.<br>احفظ المنشور قبل ما تشتري 👇"</td>
+                        <td class="slide-visual">صورة لمجموعة أجهزة كهربائية للمطبخ، مع عنوان جذاب.</td>
+                    </tr>
+                    <tr>
+                        <td class="slide-num">سلايد 2</td>
+                        <td class="slide-title">الخطوة الأولى</td>
+                        <td class="slide-script">"الخطوة 1: حدد مساحة مطبخك 📐<br>قبل ما تشتري أي جهاز، اعرف الأبعاد المتاحة.<br>✅ المطبخ الصغير: أجهزة مدمجة.<br>✅ المطبخ الكبير: أجهزة بحجم أكبر."</td>
+                        <td class="slide-visual">رسم توضيحي لمطبخ بمقاسات مختلفة، مع أجهزة مناسبة لكل مقاس.</td>
+                    </tr>
+                    <tr>
+                        <td class="slide-num">سلايد 3</td>
+                        <td class="slide-title">الخطوة الثانية</td>
+                        <td class="slide-script">"الخطوة 2: اختر حسب استهلاك الطاقة ⚡<br>الأجهزة الموفرة للطاقة تختصر فاتورتك الشهرية.<br>✅ ابحث عن تصنيف A أو A+.<br>✅ قارن الاستهلاك قبل الشراء."</td>
+                        <td class="slide-visual">ملصق تصنيف الطاقة، مع مقارنة بين جهازين بأداء مختلف.</td>
+                    </tr>
+                    <tr>
+                        <td class="slide-num">سلايد 4</td>
+                        <td class="slide-title">الخطوة الثالثة</td>
+                        <td class="slide-script">"الخطوة 3: الأجهزة الأساسية vs الكمالية 📋<br>✅ الأساسية: ثلاجة، فرن، شفاط، غسالة أطباق.<br>✅ الكمالية: مايكروويف، خلاط، غلاية.<br>ابدأ بالأساسيات حسب ميزانيتك."</td>
+                        <td class="slide-visual">قائمة بصرية للأجهزة الأساسية والكمالية بأيقونات.</td>
+                    </tr>
+                    <tr>
+                        <td class="slide-num">سلايد 5</td>
+                        <td class="slide-title">الخطوة الرابعة</td>
+                        <td class="slide-script">"الخطوة 4: العلامة التجارية والضمان 🏆<br>لا تشتري من جهة غير معروفة.<br>✅ اختر علامات موثوقة بضمان رسمي.<br>✅ تأكد من توفر قطع الغيار."</td>
+                        <td class="slide-visual">شعارات علامات تجارية موثوقة، مع رمز الضمان.</td>
+                    </tr>
+                    <tr>
+                        <td class="slide-num">سلايد 6</td>
+                        <td class="slide-title">الخطوة الخامسة</td>
+                        <td class="slide-script">"الخطوة 5: خدمة ما بعد البيع 🛠️<br>التوصيل، التركيب، والصيانة عوامل مهمة.<br>✅ تأكد من توفر خدمة تركيب احترافية.<br>✅ اقرأ سياسة الاستبدال والإرجاع."</td>
+                        <td class="slide-visual">صورة فني تركيب أو مندوب خدمة عملاء، مع رمز ثقة.</td>
+                    </tr>
+                    <tr>
+                        <td class="slide-num">سلايد 7</td>
+                        <td class="slide-title">الختام + CTA</td>
+                        <td class="slide-script">"جاهز تجهّز مطبخك؟ 🍽️<br>تشكيلة الجي كوم من الأجهزة الكهربائية متوفرة الآن.<br>اطلب الآن واستمتع بخدمة تركيب احترافية!"</td>
+                        <td class="slide-visual">مجموعة من الأجهزة الكهربائية، مع دعوة للتسوق.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- كاروسيل 3 -->
+        <div class="content-block">
+            <div class="block-header">
+                <h3>📘 كاروسيل #3 · مطبخ أحلامك في 5 خطوات</h3>
+                <div class="meta-tags">
+                    <span class="meta-tag tag-date">الثلاثاء 15 سبتمبر</span>
+                    <span class="meta-tag tag-platform-ig">إنستغرام</span>
+                    <span class="meta-tag tag-goal">قيمي + بيعي</span>
+                </div>
+            </div>
+            <div class="goal-box">
+                <div class="goal-label">🎯 الهدف من الكاروسيل</div>
+                <p>توضيح رحلة العميل مع الجي كوم من الفكرة حتى التنفيذ، مما يطمئن الجمهور ويشجعه على البدء في مشروع تفصيل مطبخ ألمنيوم.</p>
+            </div>
+            <table class="slide-table">
+                <thead>
+                    <tr><th>السلايد</th><th>العنوان</th><th>السكربت المقترح</th><th>التوجيه البصري</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="slide-num">سلايد 1</td>
+                        <td class="slide-title">الغلاف</td>
+                        <td class="slide-script">"مطبخ أحلامك في ٥ خطوات! 🏡<br>من الفكرة إلى التنفيذ مع الجي كوم.<br>احفظ المنشور 👇"</td>
+                        <td class="slide-visual">صورة مطبخ ألمنيوم فاخر، مع عنوان جذاب.</td>
+                    </tr>
+                    <tr>
+                        <td class="slide-num">سلايد 2</td>
+                        <td class="slide-title">الخطوة 1</td>
+                        <td class="slide-script">"الخطوة 1: الاستشارة المجانية 📞<br>نستمع لاحتياجك، نقيس مطبخك، ونقترح التصاميم المناسبة.<br>✅ كل هذا بدون أي التزام."</td>
+                        <td class="slide-visual">صورة مستشار يتحدث مع عميل في المعرض.</td>
+                    </tr>
+                    <tr>
+                        <td class="slide-num">سلايد 3</td>
+                        <td class="slide-title">الخطوة 2</td>
+                        <td class="slide-script">"الخطوة 2: التصميم ثلاثي الأبعاد 🎨<br>نصمم لك مطبخك بشكل واقعي قبل التنفيذ.<br>✅ ترى النتيجة قبل ما تدفع."</td>
+                        <td class="slide-visual">صورة تصميم 3D لمطبخ، مع تفاصيل التصميم.</td>
+                    </tr>
+                    <tr>
+                        <td class="slide-num">سلايد 4</td>
+                        <td class="slide-title">الخطوة 3</td>
+                        <td class="slide-script">"الخطوة 3: اختيار المواد والألوان 🎨<br>ألمنيوم بجودة عالية، ألوان تناسب ذوقك، وتشطيبات احترافية.<br>✅ خيارات متعددة تناسب كل ميزانية."</td>
+                        <td class="slide-visual">لوحة ألوان وخيارات ألمنيوم متعددة.</td>
+                    </tr>
+                    <tr>
+                        <td class="slide-num">سلايد 5</td>
+                        <td class="slide-title">الخطوة 4</td>
+                        <td class="slide-script">"الخطوة 4: التصنيع والتركيب 🛠️<br>فريق متخصص يصنّع ويركّب مطبخك بدقة واحترافية.<br>✅ التزام بالمواعيد وضمان على التركيب."</td>
+                        <td class="slide-visual">فريق تركيب أثناء العمل، مع إبراز الدقة.</td>
+                    </tr>
+                    <tr>
+                        <td class="slide-num">سلايد 6</td>
+                        <td class="slide-title">الخطوة 5</td>
+                        <td class="slide-script">"الخطوة 5: خدمة ما بعد البيع 🛠️<br>صيانة، استشارات، ودعم مستمر بعد التركيب.<br>✅ راحتك ورضاك أولويتنا."</td>
+                        <td class="slide-visual">صورة تواصل مع خدمة العملاء، مع رمز الدعم.</td>
+                    </tr>
+                    <tr>
+                        <td class="slide-num">سلايد 7</td>
+                        <td class="slide-title">الختام + CTA</td>
+                        <td class="slide-script">"جاهز تبدأ رحلتك؟ 🚀<br>تواصل مع الجي كوم اليوم واحصل على استشارة مجانية.<br>مطبخ أحلامك على بُعد خطوة!"</td>
+                        <td class="slide-visual">شعار الجي كوم، مع دعوة للتواصل الفوري.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- كاروسيل 4 -->
+        <div class="content-block">
+            <div class="block-header">
+                <h3>📘 كاروسيل #4 · الأكثر مبيعاً في الجي كوم</h3>
+                <div class="meta-tags">
+                    <span class="meta-tag tag-date">الثلاثاء 22 سبتمبر</span>
+                    <span class="meta-tag tag-platform-ig">إنستغرام</span>
+                    <span class="meta-tag tag-goal">بيعي + تعريفي</span>
+                </div>
+            </div>
+            <div class="goal-box">
+                <div class="goal-label">🎯 الهدف من الكاروسيل</div>
+                <p>عرض المنتجات الأكثر طلباً بأسلوب جذاب، مما يزيد من فرص الشراء ويستغل مبدأ "الدليل الاجتماعي" لجعل الجمهور يثق بالمنتجات ويرغب في اقتنائها.</p>
+            </div>
+            <table class="slide-table">
+                <thead>
+                    <tr><th>السلايد</th><th>العنوان</th><th>السكربت المقترح</th><th>التوجيه البصري</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="slide-num">سلايد 1</td>
+                        <td class="slide-title">الغلاف</td>
+                        <td class="slide-script">"الأكثر مبيعاً في الجي كوم 🔥<br>اختيار عملائنا الأفضل هذا الشهر.<br>اكتشفها الآن 👇"</td>
+                        <td class="slide-visual">صورة جماعية للمنتجات الأكثر مبيعاً، مع عنوان قوي.</td>
+                    </tr>
+                    <tr>
+                        <td class="slide-num">سلايد 2</td>
+                        <td class="slide-title">المنتج الأول</td>
+                        <td class="slide-script">"ثلاجة سامسونج الجديدة 🧊<br>• موفرة للطاقة.<br>• تبريد سريع ومتساوٍ.<br>• تصميم عصري.<br>⭐ تقييم 4.9/5 من عملائنا."</td>
+                        <td class="slide-visual">صورة عالية الجودة للثلاجة، مع إبراز المميزات.</td>
+                    </tr>
+                    <tr>
+                        <td class="slide-num">سلايد 3</td>
+                        <td class="slide-title">المنتج الثاني</td>
+                        <td class="slide-script">"غسالة الأطباق بوش 📀<br>• هادئة جداً.<br>• موفرة للماء.<br>• برامج متعددة.<br>⭐ الخيار الأول للعائلات."</td>
+                        <td class="slide-visual">صورة غسالة أطباق، مع إبراز الهدوء والتوفير.</td>
+                    </tr>
+                    <tr>
+                        <td class="slide-num">سلايد 4</td>
+                        <td class="slide-title">المنتج الثالث</td>
+                        <td class="slide-script">"طقم أواني الجرانيت 🍳<br>• غير لاصق.<br>• سهل التنظيف.<br>• يدوم طويلاً.<br>⭐ مثالي للاستخدام اليومي."</td>
+                        <td class="slide-visual">صورة الطقم بتفاصيل جذابة.</td>
+                    </tr>
+                    <tr>
+                        <td class="slide-num">سلايد 5</td>
+                        <td class="slide-title">المنتج الرابع</td>
+                        <td class="slide-script">"مطبخ ألمنيوم موديل 2026 🪟<br>• تصميم عصري.<br>• ألمنيوم عالي الجودة.<br>• تنفيذ سريع.<br>⭐ الخيار الأكثر طلباً هذا الشهر."</td>
+                        <td class="slide-visual">صورة مطبخ ألمنيوم منفذ حديثاً، مع تفاصيل التصميم.</td>
+                    </tr>
+                    <tr>
+                        <td class="slide-num">سلايد 6</td>
+                        <td class="slide-title">المنتج الخامس</td>
+                        <td class="slide-script">"شفاط المطبخ الحديث 💨<br>• قوي وهادئ.<br>• تصميم أنيق.<br>• سهل التنظيف.<br>⭐ ضروري لكل مطبخ عصري."</td>
+                        <td class="slide-visual">صورة الشفاط أثناء التركيب، مع إبراز الأناقة.</td>
+                    </tr>
+                    <tr>
+                        <td class="slide-num">سلايد 7</td>
+                        <td class="slide-title">الختام + CTA</td>
+                        <td class="slide-script">"جاهز تقتني الأفضل؟ 🛒<br>اطلب الآن من الجي كوم واستمتع بجودة عالية وخدمة مميزة.<br>🔥 عروض خاصة هذا الشهر!"</td>
+                        <td class="slide-visual">شعار الجي كوم مع عرض خاص، ودعوة للتسوق.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ============================================= -->
+    <!-- تبويب: الريلز                                 -->
+    <!-- ============================================= -->
+    <div id="reels" class="tab-pane">
+        <div class="section-title">الريلز الثمانية · سكربت تفصيلي</div>
+        <p class="intro-text">
+            كل ريلز مدته بين 15-30 ثانية، ويحتوي على <strong>Hook قوي في أول 3 ثوانٍ</strong>، ثم محتوى سريع،
+            وينتهي بـ <strong>CTA واضح</strong>. الهدف تنويع المحتوى بين جولات المنتجات، النصائح، والتفاعل مع الجمهور.
+        </p>
+
+        <!-- ريلز 1 -->
+        <div class="content-block">
+            <div class="block-header">
+                <h3>🎬 ريلز #1 · جولة في مطبخ ألمنيوم منفذ</h3>
+                <div class="meta-tags">
+                    <span class="meta-tag tag-date">الخميس 3 سبتمبر</span>
+                    <span class="meta-tag tag-platform-ig">إنستغرام</span>
+                    <span class="meta-tag tag-platform-tt">تيك توك</span>
+                    <span class="meta-tag tag-goal">بيعي + إلهامي</span>
+                </div>
+            </div>
+            <div class="goal-box">
+                <div class="goal-label">🎯 الهدف من الريلز</div>
+                <p>إظهار جودة تنفيذ مطابخ الألمنيوم بشكل واقعي، مما يحفز الجمهور على التواصل لطلب تصميم مشابه.</p>
+            </div>
+            <table class="reel-table">
+                <thead>
+                    <tr><th>المشهد</th><th>التوقيت</th><th>السكربت / الصوت</th><th>التوجيه البصري</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="scene-num">مشهد 1</td>
+                        <td class="scene-time">0 – 3 ث</td>
+                        <td class="scene-script">"شوف هذا المطبخ الألمنيوم! 😍<br>منفذ بالكامل من الجي كوم."</td>
+                        <td class="scene-visual">لقطة واسعة للمطبخ من زاوية جذابة، مع حركة كاميرا بطيئة.</td>
+                    </tr>
+                    <tr>
+                        <td class="scene-num">مشهد 2</td>
+                        <td class="scene-time">3 – 12 ث</td>
+                        <td class="scene-script">(موسيقى هادئة)<br>"نبدأ من الأبواب الألمنيوم بجودة عالية..."</td>
+                        <td class="scene-visual">لقطة قريبة للأبواب، مع إبراز السماكة واللمعان.</td>
+                    </tr>
+                    <tr>
+                        <td class="scene-num">مشهد 3</td>
+                        <td class="scene-time">12 – 20 ث</td>
+                        <td class="scene-script">"ثم الأدراج الداخلية المنظمة... وشوف التفاصيل!"</td>
+                        <td class="scene-visual">لقطة داخلية للأدراج، مع إبراز التنظيم والجودة.</td>
+                    </tr>
+                    <tr>
+                        <td class="scene-num">مشهد 4</td>
+                        <td class="scene-time">20 – 27 ث</td>
+                        <td class="scene-script">"جاهز تفصّل مطبخك؟ 🏡<br>تواصل مع الجي كوم لاستشارة مجانية!"</td>
+                        <td class="scene-visual">شعار الجي كوم + دعوة للتواصل.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ريلز 2 -->
+        <div class="content-block">
+            <div class="block-header">
+                <h3>🎬 ريلز #2 · قبل وبعد – تحويل مطبخ قديم</h3>
+                <div class="meta-tags">
+                    <span class="meta-tag tag-date">الأحد 6 سبتمبر</span>
+                    <span class="meta-tag tag-platform-ig">إنستغرام</span>
+                    <span class="meta-tag tag-platform-tt">تيك توك</span>
+                    <span class="meta-tag tag-goal">إلهامي + بيعي</span>
+                </div>
+            </div>
+            <div class="goal-box">
+                <div class="goal-label">🎯 الهدف من الريلز</div>
+                <p>استخدام أسلوب "قبل وبعد" لجذب الانتباه، وإظهار الفرق الكبير الذي يحدثه تجديد المطبخ بالألمنيوم.</p>
+            </div>
+            <table class="reel-table">
+                <thead>
+                    <tr><th>المشهد</th><th>التوقيت</th><th>السكربت / الصوت</th><th>التوجيه البصري</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="scene-num">مشهد 1</td>
+                        <td class="scene-time">0 – 3 ث</td>
+                        <td class="scene-script">"مطبخك قديم؟ شوف كيف تحوّله لمطبخ أحلامك! 🤩"</td>
+                        <td class="scene-visual">لقطة لمطبخ قديم متهالك، مع تعبير "قبل".</td>
+                    </tr>
+                    <tr>
+                        <td class="scene-num">مشهد 2</td>
+                        <td class="scene-time">3 – 12 ث</td>
+                        <td class="scene-script">"نبدأ بإزالة القديم... ثم نركب مطبخ ألمنيوم جديد بتصميم عصري."</td>
+                        <td class="scene-visual">مونتاج سريع لعملية الإزالة والتركيب.</td>
+                    </tr>
+                    <tr>
+                        <td class="scene-num">مشهد 3</td>
+                        <td class="scene-time">12 – 20 ث</td>
+                        <td class="scene-script">"والنتيجة... مطبخ ألمنيوم فاخر يغيّر شكل البيت بالكامل!"</td>
+                        <td class="scene-visual">لقطة كاملة للمطبخ الجديد مع موسيقى احتفالية.</td>
+                    </tr>
+                    <tr>
+                        <td class="scene-num">مشهد 4</td>
+                        <td class="scene-time">20 – 27 ث</td>
+                        <td class="scene-script">"تبي نفس التحويل؟ 🏡<br>تواصل مع الجي كوم اليوم!"</td>
+                        <td class="scene-visual">شعار الجي كوم + دعوة للتواصل.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ريلز 3 -->
+        <div class="content-block">
+            <div class="block-header">
+                <h3>🎬 ريلز #3 · 3 نصائح لاختيار الأجهزة الكهربائية</h3>
+                <div class="meta-tags">
+                    <span class="meta-tag tag-date">الخميس 10 سبتمبر</span>
+                    <span class="meta-tag tag-platform-ig">إنستغرام</span>
+                    <span class="meta-tag tag-platform-tt">تيك توك</span>
+                    <span class="meta-tag tag-goal">تعليمي + تفاعلي</span>
+                </div>
+            </div>
+            <div class="goal-box">
+                <div class="goal-label">🎯 الهدف من الريلز</div>
+                <p>تقديم قيمة عملية سريعة تشجع على الحفظ والمشاركة، مما يزيد من وصول المحتوى وبناء ثقة الجمهور بالعلامة.</p>
+            </div>
+            <table class="reel-table">
+                <thead>
+                    <tr><th>المشهد</th><th>التوقيت</th><th>السكربت / الصوت</th><th>التوجيه البصري</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="scene-num">مشهد 1</td>
+                        <td class="scene-time">0 – 3 ث</td>
+                        <td class="scene-script">"٣ نصائح قبل ما تشتري أي جهاز كهربائي! ⚡<br>النصيحة الثالثة توفر عليك آلاف!"</td>
+                        <td class="scene-visual">Hook سريع مع لقطة لمجموعة أجهزة كهربائية.</td>
+                    </tr>
+                    <tr>
+                        <td class="scene-num">مشهد 2</td>
+                        <td class="scene-time">3 – 10 ث</td>
+                        <td class="scene-script">"نصيحة 1: اختر الأجهزة الموفرة للطاقة (تصنيف A أو A+)."</td>
+                        <td class="scene-visual">ملصق تصنيف الطاقة مع تعليق نصي.</td>
+                    </tr>
+                    <tr>
+                        <td class="scene-num">مشهد 3</td>
+                        <td class="scene-time">10 – 17 ث</td>
+                        <td class="scene-script">"نصيحة 2: تأكد من توفر قطع الغيار والضمان الرسمي."</td>
+                        <td class="scene-visual">صورة كتيب ضمان + قطع غيار.</td>
+                    </tr>
+                    <tr>
+                        <td class="scene-num">مشهد 4</td>
+                        <td class="scene-time">17 – 24 ث</td>
+                        <td class="scene-script">"نصيحة 3: قارن بين متجرين قبل الشراء... وفي الجي كوم نضمن لك أفضل سعر وجودة!"</td>
+                        <td class="scene-visual">مقارنة بصرية بين متجرين، مع إبراز شعار الجي كوم.</td>
+                    </tr>
+                    <tr>
+                        <td class="scene-num">مشهد 5</td>
+                        <td class="scene-time">24 – 28 ث</td>
+                        <td class="scene-script">"أي نصيحة عجبتك؟ اكتبها في التعليقات! 💬"</td>
+                        <td class="scene-visual">CTA تفاعلي، مع شعار الجي كوم.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ريلز 4 -->
+        <div class="content-block">
+            <div class="block-header">
+                <h3>🎬 ريلز #4 · ما هو جهازك الكهربائي المفضل؟</h3>
+                <div class="meta-tags">
+                    <span class="meta-tag tag-date">الأحد 13 سبتمبر</span>
+                    <span class="meta-tag tag-platform-ig">إنستغرام</span>
+                    <span class="meta-tag tag-platform-tt">تيك توك</span>
+                    <span class="meta-tag tag-goal">تفاعلي</span>
+                </div>
+            </div>
+            <div class="goal-box">
+                <div class="goal-label">🎯 الهدف من الريلز</div>
+                <p>تحفيز الجمهور على التفاعل عبر التعليقات، مما يزيد من وصول المحتوى في الخوارزميات ويعزز الانتماء للمجتمع.</p>
+            </div>
+            <table class="reel-table">
+                <thead>
+                    <tr><th>المشهد</th><th>التوقيت</th><th>السكربت / الصوت</th><th>التوجيه البصري</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="scene-num">مشهد 1</td>
+                        <td class="scene-time">0 – 4 ث</td>
+                        <td class="scene-script">"سؤال سريع! 🤔<br>ما هو جهازك الكهربائي المفضل في المطبخ؟"</td>
+                        <td class="scene-visual">لقطة لمجموعة أجهزة كهربائية، مع نص السؤال.</td>
+                    </tr>
+                    <tr>
+                        <td class="scene-num">مشهد 2</td>
+                        <td class="scene-time">4 – 12 ث</td>
+                        <td class="scene-script">"أنا بصراحة ما أقدر أطبخ بدون الشفاط القوي... والفرن الذكي!"</td>
+                        <td class="scene-visual">لقطة للأجهزة المفضلة مع تعبيرات حماسية.</td>
+                    </tr>
+                    <tr>
+                        <td class="scene-num">مشهد 3</td>
+                        <td class="scene-time">12 – 20 ث</td>
+                        <td class="scene-script">"شاركنا إجابتك في التعليقات! 💬<br>يمكن نختار إجابتك ونعرضها في الستوري."</td>
+                        <td class="scene-visual">CTA تفاعلي، مع دعوة للتعليق.</td>
+                    </tr>
+                    <tr>
+                        <td class="scene-num">مشهد 4</td>
+                        <td class="scene-time">20 – 25 ث</td>
+                        <td class="scene-script">"تابعنا للمزيد من محتوى المطبخ! 🔌"</td>
+                        <td class="scene-visual">شعار الجي كوم + زر المتابعة.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ريلز 5 -->
+        <div class="content-block">
+            <div class="block-header">
+                <h3>🎬 ريلز #5 · جولة في معرض الجي كوم</h3>
+                <div class="meta-tags">
+                    <span class="meta-tag tag-date">الخميس 17 سبتمبر</span>
+                    <span class="meta-tag tag-platform-ig">إنستغرام</span>
+                    <span class="meta-tag tag-platform-tt">تيك توك</span>
+                    <span class="meta-tag tag-goal">تعريفي + بيعي</span>
+                </div>
+            </div>
+            <div class="goal-box">
+                <div class="goal-label">🎯 الهدف من الريلز</div>
+                <p>تعريف الجمهور بحجم المتجر وتنوع المنتجات، مما يعزز الثقة ويشجع على الزيارة أو الطلب أونلاين.</p>
+            </div>
+            <table class="reel-table">
+                <thead>
+                    <tr><th>المشهد</th><th>التوقيت</th><th>السكربت / الصوت</th><th>التوجيه البصري</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="scene-num">مشهد 1</td>
+                        <td class="scene-time">0 – 3 ث</td>
+                        <td class="scene-script">"جولة سريعة في معرض الجي كوم! 🏬<br>خليني أوريك شو عندنا."</td>
+                        <td class="scene-visual">لقطة بانورامية للمعرض من الداخل.</td>
+                    </tr>
+                    <tr>
+                        <td class="scene-num">مشهد 2</td>
+                        <td class="scene-time">3 – 12 ث</td>
+                        <td class="scene-script">"قسم الأجهزة الكهربائية... أحدث الموديلات من أشهر العلامات."</td>
+                        <td class="scene-visual">لقطة للأجهزة مع حركة كاميرا سلسة.</td>
+                    </tr>
+                    <tr>
+                        <td class="scene-num">مشهد 3</td>
+                        <td class="scene-time">12 – 20 ث</td>
+                        <td class="scene-script">"وقسم أدوات المطبخ... تشكيلة ضخمة بأسعار تنافسية!"</td>
+                        <td class="scene-visual">لقطة لأدوات المطبخ مرتبة بشكل جذاب.</td>
+                    </tr>
+                    <tr>
+                        <td class="scene-num">مشهد 4</td>
+                        <td class="scene-time">20 – 28 ث</td>
+                        <td class="scene-script">"زورونا أو اطلبوا أونلاين! 🛒<br>الجي كوم... وجهتك الشاملة للمطبخ."</td>
+                        <td class="scene-visual">شعار الجي كوم + دعوة للزيارة أو الطلب.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ريلز 6 -->
+        <div class="content-block">
+            <div class="block-header">
+                <h3>🎬 ريلز #6 · خلف الكواليس – تركيب مطبخ ألمنيوم</h3>
+                <div class="meta-tags">
+                    <span class="meta-tag tag-date">الأحد 20 سبتمبر</span>
+                    <span class="meta-tag tag-platform-ig">إنستغرام</span>
+                    <span class="meta-tag tag-platform-tt">تيك توك</span>
+                    <span class="meta-tag tag-goal">بناء الثقة</span>
+                </div>
+            </div>
+            <div class="goal-box">
+                <div class="goal-label">🎯 الهدف من الريلز</div>
+                <p>إظهار الاحترافية في العمل وبناء ثقة الجمهور من خلال عرض عملية التركيب الحقيقية.</p>
+            </div>
+            <table class="reel-table">
+                <thead>
+                    <tr><th>المشهد</th><th>التوقيت</th><th>السكربت / الصوت</th><th>التوجيه البصري</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="scene-num">مشهد 1</td>
+                        <td class="scene-time">0 – 4 ث</td>
+                        <td class="scene-script">"خلف الكواليس! 🛠️<br>شوف كيف نركب مطبخ ألمنيوم خطوة بخطوة."</td>
+                        <td class="scene-visual">لقطة سريعة لفريق العمل يستعد للتركيب.</td>
+                    </tr>
+                    <tr>
+                        <td class="scene-num">مشهد 2</td>
+                        <td class="scene-time">4 – 15 ث</td>
+                        <td class="scene-script">(موسيقى حيوية)<br>"نبدأ بتجهيز الموقع... ثم تركيب الهيكل الأساسي."</td>
+                        <td class="scene-visual">لقطات متتالية لعملية التركيب مع تسريع.</td>
+                    </tr>
+                    <tr>
+                        <td class="scene-num">مشهد 3</td>
+                        <td class="scene-time">15 – 24 ث</td>
+                        <td class="scene-script">"ثم تركيب الأبواب والأدراج... والدقة في كل تفصيلة!"</td>
+                        <td class="scene-visual">لقطة قريبة لتفاصيل التركيب.</td>
+                    </tr>
+                    <tr>
+                        <td class="scene-num">مشهد 4</td>
+                        <td class="scene-time">24 – 30 ث</td>
+                        <td class="scene-script">"والنتيجة... مطبخ ألمنيوم مثالي جاهز للاستخدام! ✅"</td>
+                        <td class="scene-visual">لقطة للمطبخ النهائي، مع شعار الجي كوم.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ريلز 7 -->
+        <div class="content-block">
+            <div class="block-header">
+                <h3>🎬 ريلز #7 · أفضل عروض سبتمبر</h3>
+                <div class="meta-tags">
+                    <span class="meta-tag tag-date">الخميس 24 سبتمبر</span>
+                    <span class="meta-tag tag-platform-ig">إنستغرام</span>
+                    <span class="meta-tag tag-platform-tt">تيك توك</span>
+                    <span class="meta-tag tag-goal">بيعي</span>
+                </div>
+            </div>
+            <div class="goal-box">
+                <div class="goal-label">🎯 الهدف من الريلز</div>
+                <p>تحفيز الجمهور على الشراء الفوري من خلال عرض عروض محدودة ومغرية، مما يزيد من معدل التحويل.</p>
+            </div>
+            <table class="reel-table">
+                <thead>
+                    <tr><th>المشهد</th><th>التوقيت</th><th>السكربت / الصوت</th><th>التوجيه البصري</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="scene-num">مشهد 1</td>
+                        <td class="scene-time">0 – 3 ث</td>
+                        <td class="scene-script">"عروض سبتمبر بدأت! 🔥<br>خصومات تصل إلى 40% على الأجهزة الكهربائية!"</td>
+                        <td class="scene-visual">لقطة لملصق "خصم 40%" بشكل جذاب.</td>
+                    </tr>
+                    <tr>
+                        <td class="scene-num">مشهد 2</td>
+                        <td class="scene-time">3 – 15 ث</td>
+                        <td class="scene-script">"ثلاجات، غسالات أطباق، أفران... كل شي بأفضل الأسعار!"</td>
+                        <td class="scene-visual">مونتاج سريع لأبرز المنتجات المخفضة.</td>
+                    </tr>
+                    <tr>
+                        <td class="scene-num">مشهد 3</td>
+                        <td class="scene-time">15 – 23 ث</td>
+                        <td class="scene-script">"العرض لفترة محدودة... لا تفوّتها! ⏳"</td>
+                        <td class="scene-visual">مؤقت تنازلي بصري، مع إبراز الشعار.</td>
+                    </tr>
+                    <tr>
+                        <td class="scene-num">مشهد 4</td>
+                        <td class="scene-time">23 – 28 ث</td>
+                        <td class="scene-script">"اطلب الآن من الجي كوم! 🛒"</td>
+                        <td class="scene-visual">شعار الجي كوم + دعوة للطلب الفوري.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ريلز 8 -->
+        <div class="content-block">
+            <div class="block-header">
+                <h3>🎬 ريلز #8 · ختام الشهر – شكراً لكم</h3>
+                <div class="meta-tags">
+                    <span class="meta-tag tag-date">الأحد 27 سبتمبر</span>
+                    <span class="meta-tag tag-platform-ig">إنستغرام</span>
+                    <span class="meta-tag tag-platform-tt">تيك توك</span>
+                    <span class="meta-tag tag-goal">بناء الولاء</span>
+                </div>
+            </div>
+            <div class="goal-box">
+                <div class="goal-label">🎯 الهدف من الريلز</div>
+                <p>ختام الشهر برسالة شكر وامتنان للجمهور، مما يعزز العلاقة العاطفية ويحفزهم على انتظار محتوى الشهر القادم.</p>
+            </div>
+            <table class="reel-table">
+                <thead>
+                    <tr><th>المشهد</th><th>التوقيت</th><th>السكربت / الصوت</th><th>التوجيه البصري</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="scene-num">مشهد 1</td>
+                        <td class="scene-time">0 – 4 ث</td>
+                        <td class="scene-script">"شهر رائع معاكم! ❤️<br>شكراً لكل تفاعل وكل رسالة."</td>
+                        <td class="scene-visual">لقطة للفريق وهو يلوح للكاميرا.</td>
+                    </tr>
+                    <tr>
+                        <td class="scene-num">مشهد 2</td>
+                        <td class="scene-time">4 – 15 ث</td>
+                        <td class="scene-script">(موسيقى مؤثرة)<br>"سوينا معاً مطابخ، جهزنا أجهزة، وقدّمنا نصائح..."</td>
+                        <td class="scene-visual">مونتاج لأبرز لحظات الشهر.</td>
+                    </tr>
+                    <tr>
+                        <td class="scene-num">مشهد 3</td>
+                        <td class="scene-time">15 – 23 ث</td>
+                        <td class="scene-script">"ونتطلع للمزيد في أكتوبر! 🔥<br>تابعنا ولا تفوّت جديدنا."</td>
+                        <td class="scene-visual">شعار الجي كوم + دعوة للمتابعة.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ============================================= -->
+    <!-- تبويب: جدول النشر                             -->
+    <!-- ============================================= -->
+    <div id="schedule" class="tab-pane">
+        <div class="section-title">جدول النشر · سبتمبر 2026</div>
+        <p class="intro-text">
+            توزيع المحتوى على مدار الشهر مع تحديد اليوم، المنصة، ونوع المحتوى. يهدف الجدول إلى تحقيق
+            توازن بين المحتوى التعليمي، الترفيهي، والتفاعلي، مع التركيز على إبراز المنتجات والخدمات.
+        </p>
+
+        <table class="publish-table">
+            <thead>
+                <tr>
+                    <th>الأسبوع</th>
+                    <th>اليوم</th>
+                    <th>التاريخ</th>
+                    <th>نوع المحتوى</th>
+                    <th>العنوان</th>
+                    <th>المنصة</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- الأسبوع الأول -->
+                <tr>
+                    <td rowspan="3" style="font-weight:800;color:#D8B4FE;">الأسبوع الأول</td>
+                    <td class="day-cell">الثلاثاء</td>
+                    <td><span class="date-cell">1 سبتمبر</span></td>
+                    <td><span class="type-badge type-carousel">📘 كاروسيل</span></td>
+                    <td>5 أخطاء عند اختيار مطبخ الألمنيوم</td>
+                    <td>إنستغرام</td>
+                </tr>
+                <tr>
+                    <td class="day-cell">الخميس</td>
+                    <td><span class="date-cell">3 سبتمبر</span></td>
+                    <td><span class="type-badge type-reel">🎬 ريلز</span></td>
+                    <td>جولة في مطبخ ألمنيوم منفذ</td>
+                    <td>إنستغرام + تيك توك</td>
+                </tr>
+                <tr>
+                    <td class="day-cell">الأحد</td>
+                    <td><span class="date-cell">6 سبتمبر</span></td>
+                    <td><span class="type-badge type-reel">🎬 ريلز</span></td>
+                    <td>قبل وبعد – تحويل مطبخ قديم</td>
+                    <td>إنستغرام + تيك توك</td>
+                </tr>
+
+                <!-- الأسبوع الثاني -->
+                <tr>
+                    <td rowspan="3" style="font-weight:800;color:#D8B4FE;">الأسبوع الثاني</td>
+                    <td class="day-cell">الثلاثاء</td>
+                    <td><span class="date-cell">8 سبتمبر</span></td>
+                    <td><span class="type-badge type-carousel">📘 كاروسيل</span></td>
+                    <td>كيف تختار الأجهزة الكهربائية المناسبة؟</td>
+                    <td>إنستغرام</td>
+                </tr>
+                <tr>
+                    <td class="day-cell">الخميس</td>
+                    <td><span class="date-cell">10 سبتمبر</span></td>
+                    <td><span class="type-badge type-reel">🎬 ريلز</span></td>
+                    <td>3 نصائح لاختيار الأجهزة الكهربائية</td>
+                    <td>إنستغرام + تيك توك</td>
+                </tr>
+                <tr>
+                    <td class="day-cell">الأحد</td>
+                    <td><span class="date-cell">13 سبتمبر</span></td>
+                    <td><span class="type-badge type-reel">🎬 ريلز</span></td>
+                    <td>ما هو جهازك الكهربائي المفضل؟</td>
+                    <td>إنستغرام + تيك توك</td>
+                </tr>
+
+                <!-- الأسبوع الثالث -->
+                <tr>
+                    <td rowspan="3" style="font-weight:800;color:#D8B4FE;">الأسبوع الثالث</td>
+                    <td class="day-cell">الثلاثاء</td>
+                    <td><span class="date-cell">15 سبتمبر</span></td>
+                    <td><span class="type-badge type-carousel">📘 كاروسيل</span></td>
+                    <td>مطبخ أحلامك في 5 خطوات</td>
+                    <td>إنستغرام</td>
+                </tr>
+                <tr>
+                    <td class="day-cell">الخميس</td>
+                    <td><span class="date-cell">17 سبتمبر</span></td>
+                    <td><span class="type-badge type-reel">🎬 ريلز</span></td>
+                    <td>جولة في معرض الجي كوم</td>
+                    <td>إنستغرام + تيك توك</td>
+                </tr>
+                <tr>
+                    <td class="day-cell">الأحد</td>
+                    <td><span class="date-cell">20 سبتمبر</span></td>
+                    <td><span class="type-badge type-reel">🎬 ريلز</span></td>
+                    <td>خلف الكواليس – تركيب مطبخ ألمنيوم</td>
+                    <td>إنستغرام + تيك توك</td>
+                </tr>
+
+                <!-- الأسبوع الرابع -->
+                <tr>
+                    <td rowspan="3" style="font-weight:800;color:#D8B4FE;">الأسبوع الرابع</td>
+                    <td class="day-cell">الثلاثاء</td>
+                    <td><span class="date-cell">22 سبتمبر</span></td>
+                    <td><span class="type-badge type-carousel">📘 كاروسيل</span></td>
+                    <td>الأكثر مبيعاً في الجي كوم</td>
+                    <td>إنستغرام</td>
+                </tr>
+                <tr>
+                    <td class="day-cell">الخميس</td>
+                    <td><span class="date-cell">24 سبتمبر</span></td>
+                    <td><span class="type-badge type-reel">🎬 ريلز</span></td>
+                    <td>أفضل عروض سبتمبر</td>
+                    <td>إنستغرام + تيك توك</td>
+                </tr>
+                <tr>
+                    <td class="day-cell">الأحد</td>
+                    <td><span class="date-cell">27 سبتمبر</span></td>
+                    <td><span class="type-badge type-reel">🎬 ريلز</span></td>
+                    <td>ختام الشهر – شكراً لكم</td>
+                    <td>إنستغرام + تيك توك</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ============================================= -->
+    <!-- تبويب: أهداف المحتوى                          -->
+    <!-- ============================================= -->
+    <div id="goals" class="tab-pane">
+        <div class="section-title">أهداف كل نوع محتوى</div>
+        <p class="intro-text">
+            لكل نوع محتوى هدف محدد، وفهم هذه الأهداف يساعد الفريق على إنتاج محتوى موجّه وفعّال
+            يخدم أهداف العلامة التجارية للجي كوم.
+        </p>
+
+        <div class="content-block">
+            <div class="block-header">
+                <h3>📘 الكاروسيلات (4 شهرياً)</h3>
+                <div class="meta-tags"><span class="meta-tag tag-platform-ig">إنستغرام</span></div>
+            </div>
+            <div class="goal-box">
+                <div class="goal-label">🎯 الهدف العام</div>
+                <p>تقديم محتوى تعليمي/قيمي عميق يبني الثقة بالعلامة كخبير في مجال تجهيز المطابخ، ويزيد من وقت التفاعل مع المنشور، ويحفز الجمهور على الحفظ والمشاركة والاستفسار.</p>
+            </div>
+            <ul style="list-style:none;padding:0;color:#B8A8D0;font-size:14px;line-height:2.2;">
+                <li>✅ <strong>بناء السلطة المعرفية:</strong> إظهار الجي كوم كمرجع موثوق في الأجهزة الكهربائية ومطابخ الألمنيوم.</li>
+                <li>✅ <strong>زيادة التفاعل:</strong> محتوى قيّم يحفز على الحفظ والمشاركة.</li>
+                <li>✅ <strong>توليد عملاء محتملين:</strong> CTA واضح في نهاية كل كاروسيل لطلب استشارة أو عرض سعر.</li>
+                <li>✅ <strong>تحسين الوصول العضوي:</strong> المحتوى التعليمي يحظى بدعم أكبر من الخوارزميات.</li>
+            </ul>
+        </div>
+
+        <div class="content-block">
+            <div class="block-header">
+                <h3>🎬 الريلز (8 شهرياً)</h3>
+                <div class="meta-tags">
+                    <span class="meta-tag tag-platform-ig">إنستغرام</span>
+                    <span class="meta-tag tag-platform-tt">تيك توك</span>
+                </div>
+            </div>
+            <div class="goal-box">
+                <div class="goal-label">🎯 الهدف العام</div>
+                <p>زيادة الوعي بالعلامة والوصول لجمهور جديد، وإظهار المنتجات والخدمات في سياق عملي وترفيهي يزيد من الرغبة في الشراء أو طلب الخدمة.</p>
+            </div>
+            <ul style="list-style:none;padding:0;color:#B8A8D0;font-size:14px;line-height:2.2;">
+                <li>✅ <strong>زيادة الانتشار:</strong> الفيديو القصير يحقق وصولاً أوسع من الصور.</li>
+                <li>✅ <strong>بناء الارتباط العاطفي:</strong> إظهار المنتجات في لحظات سعيدة ويومية.</li>
+                <li>✅ <strong>تحفيز التفاعل:</strong> محتوى تفاعلي (أسئلة، تحديات) يزيد التعليقات.</li>
+                <li>✅ <strong>تحويل المتابعين:</strong> CTA مباشر في كل ريلز لدفع الجمهور للطلب أو الاستفسار.</li>
+            </ul>
+        </div>
+
+        <div class="content-block">
+            <div class="block-header">
+                <h3>📊 خلاصة التوازن بين أنواع المحتوى</h3>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+                <div style="background:rgba(52,211,153,0.04);border-radius:14px;padding:18px;text-align:center;">
+                    <div style="font-size:32px;font-weight:800;color:#34D8A4;">50%</div>
+                    <div style="color:#B8A8D0;font-size:13px;margin-top:6px;">محتوى تعليمي/قيمي (كاروسيل + ريلز نصائح)</div>
+                </div>
+                <div style="background:rgba(251,191,36,0.04);border-radius:14px;padding:18px;text-align:center;">
+                    <div style="font-size:32px;font-weight:800;color:#FBBF24;">30%</div>
+                    <div style="color:#B8A8D0;font-size:13px;margin-top:6px;">محتوى بيعي/عرضي (الأكثر مبيعاً + عروض + جولات)</div>
+                </div>
+                <div style="background:rgba(232,121,249,0.04);border-radius:14px;padding:18px;text-align:center;">
+                    <div style="font-size:32px;font-weight:800;color:#F0ABFC;">20%</div>
+                    <div style="color:#B8A8D0;font-size:13px;margin-top:6px;">محتوى تفاعلي (أسئلة + تحديات)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- التذييل -->
+    <div class="footer-note">
+        <div class="brand-text">🔌 الجي كوم</div>
+        <div class="tagline">أجهزة كهربائية <span>·</span> أدوات مطبخ <span>·</span> مطابخ ألمنيوم</div>
+        <div style="margin-top:12px;font-size:13px;color:#6A5A8A;border-top:1px solid rgba(160,100,240,0.06);padding-top:12px;">
+            ورشة محتوى سبتمبر 2026 · 4 كاروسيل + 8 ريلز
+        </div>
+    </div>
+
+</div>
+
+<script>
+    var tabs = document.querySelectorAll('.tab-btn');
+    var panes = document.querySelectorAll('.tab-pane');
+
+    tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            tabs.forEach(function(t) { t.classList.remove('active'); });
+            panes.forEach(function(p) { p.classList.remove('active'); });
+            this.classList.add('active');
+            var target = this.getAttribute('data-tab');
+            document.getElementById(target).classList.add('active');
+        });
+    });
+</script>
+
+</body>
+</html>
